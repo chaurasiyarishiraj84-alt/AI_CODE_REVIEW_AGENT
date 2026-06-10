@@ -19,11 +19,9 @@ class ReviewState:
     current_file: str = ""
     files_done: int = 0
     files_total: int = 0
-    status: str = "idle"  # idle | running | done | error
+    status: str = "idle"  
     error: Optional[str] = None
 
-    # Optional UI callback — called every time a log line is added
-    # so the dashboard can update in real-time
     _ui_log_cb: Optional[Callable[[str], None]] = field(
         default=None, repr=False, compare=False
     )
@@ -34,10 +32,10 @@ class ReviewState:
             try:
                 self._ui_log_cb(msg)
             except Exception:
-                pass  # Never crash the pipeline because of a UI callback
+                pass  
 
     def progress(self) -> float:
         """Return completion fraction 0.0–1.0."""
         if self.files_total == 0:
             return 0.0
-        return self.files_done / self.files_total  # BUG FIX: was self.files_totals
+        return self.files_done / self.files_total  
