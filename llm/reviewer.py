@@ -1,12 +1,6 @@
 """
 Send code chunks to Groq and return parsed issues.
 Ollama is kept as fallback only.
-
-Setup:
-  1. Go to https://console.groq.com/keys
-  2. Create free API key
-  3. Add to .env:  GROQ_API_KEY=gsk_xxxx
-  4. pip install groq
 """
 
 from __future__ import annotations
